@@ -6,6 +6,7 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class principal; }
 QT_END_NAMESPACE
+class QProcess;
 
 class principal : public QWidget
 {
@@ -20,8 +21,11 @@ private slots:
     void on_btn_eliminar_clicked();
     void on_btn_comprimir_clicked();
     void on_btn_destino_clicked();
+    void readyRead();
+    void finished();
 
 private:
     Ui::principal *ui;
+    QProcess *mProcess;
 };
 #endif // PRINCIPAL_H

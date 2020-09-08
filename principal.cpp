@@ -5,6 +5,7 @@
 #include <QByteArray>
 #include <stdio.h>
 #include <stdlib.h>
+#include <QProcess>
 
 QByteArray uriOrigen, uriDestino;
 
@@ -14,6 +15,11 @@ principal::principal(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("ComPdf");
+    mProcess = new QProcess(this);
+
+    connect (mProcess, SIGNAL(readyReadStandardOutput()), this, SLOT(readyRead()));
+    connect (mProcess, SIGNAL(finished (int, QProcess::ExitStatus)), this, SLOT(finished()));
+
 }
 
 principal::~principal()
@@ -21,14 +27,10 @@ principal::~principal()
     delete ui;
 }
 
-
 void principal::on_btn_agregar_clicked()
 {
     QString origen = QFileDialog::getOpenFileName(this, "Archivo a agregar", QDir::homePath());
-    //QMessageBox::information(this, "Información", archivo);
     uriOrigen = origen.toLocal8Bit();
-    //const char *comando= "gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=destino.pdf " + uri;
-    //system(comando);
     ui->tx_origen->setText(origen);
 
 }
@@ -44,7 +46,6 @@ void principal::on_btn_eliminar_clicked()
 
 void principal::on_btn_comprimir_clicked()
 {
-
     if(uriOrigen==""){
       ui->tx_mensaje->setText("Elige un Origen");
     }else if(uriDestino==""){
@@ -52,9 +53,22 @@ void principal::on_btn_comprimir_clicked()
     }
     if(uriOrigen!="" && uriDestino!=""){
         const char *comando= "gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="+uriDestino+"/destino.pdf " + uriOrigen;
-        system(comando);
-        ui->tx_mensaje->setText("Compresión terminada");
+        mProcess->start("/bin/sh", QStringList()<< "-c" << comando);
     }
+
+}
+void principal::finished()
+{
+  ui->tx_mensaje->setText("Compresión terminada");
+}
+void principal::readyRead()
+{
+  if (!mProcess)
+    return;
+  // Para este ciomando no se utiliza ya que no devuelve ningun valor
+  QString str = mProcess->readAllStandardOutput();
+  ui->tx_mensaje->setText(str);
+
 
 }
 
