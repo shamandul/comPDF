@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>sepia.ico</file>
+        <file>Sepia.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>Sepia.png</file>
+    </qresource>
+</RCC>
