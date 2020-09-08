@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="recurso.qrc">
-    <normaloff>:/images/Sepia.png</normaloff>:/images/Sepia.png</iconset>
+    <normaloff>:/images/image/Sepia.png</normaloff>:/images/image/Sepia.png</iconset>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
