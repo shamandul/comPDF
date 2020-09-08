@@ -17,7 +17,8 @@ principal::principal(QWidget *parent)
     setWindowTitle("ComPdf");
     mProcess = new QProcess(this);
 
-    connect (mProcess, SIGNAL(readyReadStandardOutput()), this, SLOT(readyRead()));
+    //connect (mProcess, SIGNAL(readyReadStandardOutput()), this, SLOT(readyRead()));
+    connect (mProcess, SIGNAL(started()), this, SLOT(readyRead()));
     connect (mProcess, SIGNAL(finished (int, QProcess::ExitStatus)), this, SLOT(finished()));
 
 }
@@ -63,11 +64,11 @@ void principal::finished()
 }
 void principal::readyRead()
 {
-  if (!mProcess)
-    return;
+  /*if (!mProcess)
+    return;*/
   // Para este ciomando no se utiliza ya que no devuelve ningun valor
-  QString str = mProcess->readAllStandardOutput();
-  ui->tx_mensaje->setText(str);
+  //QString str = mProcess->readAllStandardOutput();
+  ui->tx_mensaje->setText("Comienza la compresión");
 
 
 }
