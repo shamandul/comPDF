@@ -2,6 +2,8 @@
 #define PRINCIPAL_H
 
 #include <QWidget>
+//#include <QListView>
+#include <QAction>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class principal; }
@@ -11,6 +13,14 @@ class QProcess;
 class principal : public QWidget
 {
     Q_OBJECT
+
+protected:
+
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dragLeaveEvent(QDragLeaveEvent *event);
+    void dragMoveEvent(QDragMoveEvent *event);
+    void dropEvent(QDropEvent *event);
+
 
 public:
     principal(QWidget *parent = nullptr);
@@ -23,9 +33,15 @@ private slots:
     void on_btn_destino_clicked();
     void readyRead();
     void finished();
+   /* void onAdd();
+    void onRemove();*/
 
 private:
     Ui::principal *ui;
     QProcess *mProcess;
+   /* QListView* mListview = nullptr;
+    QAction* mActAdd = nullptr;
+    QAction* mActRemove = nullptr;*/
+
 };
 #endif // PRINCIPAL_H

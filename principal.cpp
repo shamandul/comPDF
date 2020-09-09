@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <QProcess>
+#include <QDragEnterEvent>
+#include <QMimeData>
+
 
 QByteArray uriOrigen, uriDestino;
 
@@ -15,6 +18,13 @@ principal::principal(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("ComPdf");
+   /* mListview = new QListView(this);
+    mListview->setDragEnabled(true);
+    mListview->setAcceptDrops(true);
+    mListview->setDropIndicatorShown(true);
+    mListview->setDefaultDropAction(Qt::MoveAction);*/
+    setAcceptDrops(true);
+    //ui->listView->setDragEnabled(true);
     mProcess = new QProcess(this);
 
     //connect (mProcess, SIGNAL(readyReadStandardOutput()), this, SLOT(readyRead()));
@@ -26,6 +36,34 @@ principal::principal(QWidget *parent)
 principal::~principal()
 {
     delete ui;
+}
+void principal::dragEnterEvent(QDragEnterEvent *event)
+{
+    event->accept();
+}
+void principal::dragLeaveEvent(QDragLeaveEvent *event)
+{
+    event->accept();
+}
+void principal::dragMoveEvent(QDragMoveEvent *event)
+{
+    event->accept();
+}
+
+
+void principal::dropEvent(QDropEvent *event)
+{
+    QString nombreArchivo;
+    QList<QUrl> urls;
+    QList<QUrl>::Iterator i;
+    urls = event->mimeData()->urls();
+
+    for(i = urls.begin(); i != urls.end(); ++i)
+    {
+        nombreArchivo = i->fileName();
+       // ui->lista->addItem(nombreArchivo);
+        ui->lista->addItem(nombreArchivo);
+    }
 }
 
 void principal::on_btn_agregar_clicked()
