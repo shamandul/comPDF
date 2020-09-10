@@ -1,13 +1,13 @@
 <RCC>
     <qresource prefix="/images">
-        <file>image/Sepia.png</file>
-        <file>image/sepia.ico</file>
         <file>image/unir.svg</file>
         <file>image/origen.svg</file>
         <file>image/destino.svg</file>
         <file>image/delete.svg</file>
         <file>image/comprimir.svg</file>
         <file>image/add.svg</file>
+        <file>image/inicio.png</file>
+        <file>image/icono.png</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
