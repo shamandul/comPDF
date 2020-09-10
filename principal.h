@@ -35,11 +35,13 @@ private slots:
     void finished();
     void onAdd();
     void onRemove();
+    void on_btn_destino_unir_clicked();
+    void on_bt_unir_clicked();
+    void on_bt_unir_comprimir_clicked();
 
 private:
     Ui::principal *ui;
     QProcess *mProcess;
-   /* QListView* mListview = nullptr;*/
     QAction* mActAdd = nullptr;
     QAction* mActRemove = nullptr;
 

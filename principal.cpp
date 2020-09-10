@@ -185,3 +185,32 @@ void principal::onRemove()
 {
 
 }
+/**
+ * Método que nos permite controlar el evento on click
+ * del botón destino_unir y nos permite elegir la carpeta
+ * de destino
+ * @brief principal::on_btn_destino_unir_clicked
+ */
+void principal::on_btn_destino_unir_clicked()
+{
+
+}
+/**
+ * Método que nos permite controlar el evento on click
+ * del botón unir que nos permite unir varios PDF en uno solo
+ * @brief principal::on_bt_unir_clicked
+ */
+void principal::on_bt_unir_clicked()
+{
+
+}
+/**
+ * Método que nos permite controlar el evento on click
+ * del botón unir y comprimir que nos permite  unir varios
+ * PDF en uno solo y comprimirlo
+ * @brief principal::on_bt_unir_comprimir_clicked
+ */
+void principal::on_bt_unir_comprimir_clicked()
+{
+
+}
