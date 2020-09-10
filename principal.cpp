@@ -81,16 +81,16 @@ void principal::dragMoveEvent(QDragMoveEvent *event)
  */
 void principal::dropEvent(QDropEvent *event)
 {
-    QString nombreArchivo;
+    QString pathArchivo;
     QList<QUrl> urls;
     QList<QUrl>::Iterator i;
     urls = event->mimeData()->urls();
 
     for(i = urls.begin(); i != urls.end(); ++i)
     {
-        nombreArchivo = i->fileName();
-       // ui->lista->addItem(nombreArchivo);
-        ui->lista->addItem(nombreArchivo);
+        //nombreArchivo = i->fileName();
+        pathArchivo = i->path();
+        ui->lista->addItem(pathArchivo);
     }
 }
 /**
