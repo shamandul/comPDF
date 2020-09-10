@@ -33,15 +33,15 @@ private slots:
     void on_btn_destino_clicked();
     void readyRead();
     void finished();
-   /* void onAdd();
-    void onRemove();*/
+    void onAdd();
+    void onRemove();
 
 private:
     Ui::principal *ui;
     QProcess *mProcess;
-   /* QListView* mListview = nullptr;
+   /* QListView* mListview = nullptr;*/
     QAction* mActAdd = nullptr;
-    QAction* mActRemove = nullptr;*/
+    QAction* mActRemove = nullptr;
 
 };
 #endif // PRINCIPAL_H
