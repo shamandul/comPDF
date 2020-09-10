@@ -18,7 +18,7 @@
     <normaloff>:/images/image/Sepia.png</normaloff>:/images/image/Sepia.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
+   <item row="1" column="0">
     <widget class="QGroupBox" name="groupBox_3">
      <property name="title">
       <string>Configuracion</string>
@@ -55,7 +55,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string/>
@@ -66,12 +66,20 @@
         <property name="text">
          <string>Origen</string>
         </property>
+        <property name="icon">
+         <iconset resource="recurso.qrc">
+          <normaloff>:/images/image/origen.svg</normaloff>:/images/image/origen.svg</iconset>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="btn_destino">
         <property name="text">
          <string>Destino</string>
+        </property>
+        <property name="icon">
+         <iconset resource="recurso.qrc">
+          <normaloff>:/images/image/destino.svg</normaloff>:/images/image/destino.svg</iconset>
         </property>
        </widget>
       </item>
@@ -80,6 +88,10 @@
         <property name="text">
          <string>Eliminar</string>
         </property>
+        <property name="icon">
+         <iconset resource="recurso.qrc">
+          <normaloff>:/images/image/delete.svg</normaloff>:/images/image/delete.svg</iconset>
+        </property>
        </widget>
       </item>
       <item>
@@ -87,12 +99,16 @@
         <property name="text">
          <string>Comprimir</string>
         </property>
+        <property name="icon">
+         <iconset resource="recurso.qrc">
+          <normaloff>:/images/image/comprimir.svg</normaloff>:/images/image/comprimir.svg</iconset>
+        </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="3" column="0">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
       <string/>
@@ -113,7 +129,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox_4">
      <property name="title">
       <string>Lista de PDF</string>
@@ -121,6 +137,47 @@
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <widget class="QListWidget" name="lista"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QGroupBox" name="groupBox_5">
+        <property name="title">
+         <string>GroupBox</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Unir</string>
+             </property>
+             <property name="icon">
+              <iconset resource="recurso.qrc">
+               <normaloff>:/images/image/unir.svg</normaloff>:/images/image/unir.svg</iconset>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="text">
+              <string>Unir y Comprimir</string>
+             </property>
+             <property name="icon">
+              <iconset resource="recurso.qrc">
+               <normaloff>:/images/image/comprimir.svg</normaloff>:/images/image/comprimir.svg</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
       </item>
      </layout>
     </widget>

@@ -18,20 +18,13 @@ principal::principal(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("ComPdf");
-   /* mListview = new QListView(this);
-    mListview->setDragEnabled(true);
-    mListview->setAcceptDrops(true);
-    mListview->setDropIndicatorShown(true);
-    mListview->setDefaultDropAction(Qt::MoveAction);*/
     ui->lista->setDragEnabled(true);
     ui->lista->setAcceptDrops(true);
     ui->lista->setDropIndicatorShown(true);
     ui->lista->setDefaultDropAction(Qt::MoveAction);
     setAcceptDrops(true);
-    //ui->listView->setDragEnabled(true);
     mProcess = new QProcess(this);
 
-    //connect (mProcess, SIGNAL(readyReadStandardOutput()), this, SLOT(readyRead()));
     connect (mProcess, SIGNAL(started()), this, SLOT(readyRead()));
     connect (mProcess, SIGNAL(finished (int, QProcess::ExitStatus)), this, SLOT(finished()));
 
