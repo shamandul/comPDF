@@ -70,7 +70,7 @@
    <item row="2" column="0">
     <widget class="QGroupBox" name="groupBox_5">
      <property name="title">
-      <string>GroupBox</string>
+      <string/>
      </property>
      <layout class="QGridLayout" name="gridLayout_5">
       <item row="0" column="0" colspan="2">

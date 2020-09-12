@@ -11,6 +11,7 @@
 
 
 QByteArray uriOrigen, uriDestino;
+QString pathArchivo;
 
 principal::principal(QWidget *parent)
     : QWidget(parent)
@@ -74,7 +75,7 @@ void principal::dragMoveEvent(QDragMoveEvent *event)
  */
 void principal::dropEvent(QDropEvent *event)
 {
-    QString pathArchivo;
+    //QString pathArchivo;
     QList<QUrl> urls;
     QList<QUrl>::Iterator i;
     urls = event->mimeData()->urls();
@@ -203,6 +204,22 @@ void principal::on_btn_destino_unir_clicked()
 void principal::on_bt_unir_clicked()
 {
 
+    QString archivos, comando;
+    comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
+    if(uriDestino=="")
+    {
+        char *home = getenv("HOME");
+        uriDestino=home;
+    }
+    ui->tx_destino_unir->setText(uriDestino);
+    comando += uriDestino + "/salida.pdf";
+
+    for(int i = 0; i != ui->lista->count(); ++i)
+    {
+      archivos += ui->lista->item(i)->text() + " ";
+    }
+    comando += " " + archivos;
+    mProcess->start("/bin/sh", QStringList()<< "-c" << comando);
 }
 /**
  * Método que nos permite controlar el evento on click
