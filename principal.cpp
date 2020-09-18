@@ -206,6 +206,29 @@ void principal::on_btn_destino_unir_clicked()
  * del botón unir que nos permite unir varios PDF en uno solo
  * @brief principal::on_bt_unir_clicked
  */
+void principal::on_bt_unir_clicked()
+{
+
+    QString archivos, comando;
+    comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
+    unirPdf(comando, archivos);
+}
+/**
+ * Método que nos permite controlar el evento on click
+ * del botón unir y comprimir que nos permite  unir varios
+ * PDF en uno solo y comprimirlo
+ * @brief principal::on_bt_unir_comprimir_clicked
+ */
+void principal::on_bt_unir_comprimir_clicked()
+{
+
+}
+/**
+ * Método que nos permite unir PDF
+ * @brief principal::unirPdf
+ * @param comando
+ * @param archivos
+ */
 void principal::unirPdf(QString comando, QString archivos)
 {
     if(uriDestino=="")
@@ -222,22 +245,4 @@ void principal::unirPdf(QString comando, QString archivos)
     }
     comando += " " + archivos;
     mProcess->start("/bin/sh", QStringList()<< "-c" << comando);
-}
-
-void principal::on_bt_unir_clicked()
-{
-
-    QString archivos, comando;
-    comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
-    unirPdf();
-}
-/**
- * Método que nos permite controlar el evento on click
- * del botón unir y comprimir que nos permite  unir varios
- * PDF en uno solo y comprimirlo
- * @brief principal::on_bt_unir_comprimir_clicked
- */
-void principal::on_bt_unir_comprimir_clicked()
-{
-
 }
