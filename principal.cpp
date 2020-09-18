@@ -82,9 +82,14 @@ void principal::dropEvent(QDropEvent *event)
 
     for(i = urls.begin(); i != urls.end(); ++i)
     {
-        //nombreArchivo = i->fileName();
-        pathArchivo = i->path();
-        ui->lista->addItem(pathArchivo);
+       int lastPoint = i->fileName().lastIndexOf(".");
+       QString extension = i->fileName().mid(lastPoint);
+       if(extension==".pdf" || extension ==".PDF"){
+            pathArchivo = i->path();
+            ui->lista->addItem(pathArchivo);
+        }
+
+
     }
 }
 /**
@@ -201,11 +206,8 @@ void principal::on_btn_destino_unir_clicked()
  * del botón unir que nos permite unir varios PDF en uno solo
  * @brief principal::on_bt_unir_clicked
  */
-void principal::on_bt_unir_clicked()
+void principal::unirPdf(QString comando, QString archivos)
 {
-
-    QString archivos, comando;
-    comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
     if(uriDestino=="")
     {
         char *home = getenv("HOME");
@@ -220,6 +222,14 @@ void principal::on_bt_unir_clicked()
     }
     comando += " " + archivos;
     mProcess->start("/bin/sh", QStringList()<< "-c" << comando);
+}
+
+void principal::on_bt_unir_clicked()
+{
+
+    QString archivos, comando;
+    comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
+    unirPdf();
 }
 /**
  * Método que nos permite controlar el evento on click
