@@ -222,7 +222,7 @@ void principal::on_bt_unir_clicked()
 void principal::on_bt_unir_comprimir_clicked()
 {
     QString comando;
-    comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
+    comando="gs -dBATCH -dNOPAUSE -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -q -sDEVICE=pdfwrite -sOutputFile=";
     unirPdf(comando);
 }
 /**
