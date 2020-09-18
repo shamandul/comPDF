@@ -26,7 +26,7 @@ public:
     principal(QWidget *parent = nullptr);
     ~principal();
 
-    void unirPdf(QString comando, QString archivos);
+    void unirPdf(QString comando);
     
 private slots:
     void on_btn_agregar_clicked();

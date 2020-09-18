@@ -209,9 +209,9 @@ void principal::on_btn_destino_unir_clicked()
 void principal::on_bt_unir_clicked()
 {
 
-    QString archivos, comando;
+    QString comando;
     comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
-    unirPdf(comando, archivos);
+    unirPdf(comando);
 }
 /**
  * Método que nos permite controlar el evento on click
@@ -221,7 +221,9 @@ void principal::on_bt_unir_clicked()
  */
 void principal::on_bt_unir_comprimir_clicked()
 {
-
+    QString comando;
+    comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
+    unirPdf(comando);
 }
 /**
  * Método que nos permite unir PDF
@@ -229,8 +231,9 @@ void principal::on_bt_unir_comprimir_clicked()
  * @param comando
  * @param archivos
  */
-void principal::unirPdf(QString comando, QString archivos)
+void principal::unirPdf(QString comando)
 {
+    QString archivos;
     if(uriDestino=="")
     {
         char *home = getenv("HOME");
