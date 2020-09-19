@@ -113,8 +113,11 @@ void principal::on_btn_agregar_clicked()
  */
 void principal::on_btn_eliminar_clicked()
 {
+    //TODO: Limpiar lista y destino
     ui->tx_origen->setText("");
     ui->tx_destino->setText("");
+    ui->tx_destino_unir->setText("");
+    ui->lista->clear();
     uriOrigen = "";
     uriDestino= "";
     ui->tx_mensaje->setText("Elige un Origen y un Destino.");
@@ -199,7 +202,9 @@ void principal::onRemove()
  */
 void principal::on_btn_destino_unir_clicked()
 {
-
+    QString destino = QFileDialog::getExistingDirectory(0, ("Selecciona un directorio"), QDir::currentPath());
+    uriDestino= destino.toLocal8Bit();
+    ui->tx_destino_unir->setText(destino);
 }
 /**
  * Método que nos permite controlar el evento on click
