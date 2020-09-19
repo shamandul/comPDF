@@ -7,7 +7,7 @@ Pongo a disposición  para todo el que lo necesite el código fuente y los archi
 
 Si es posible intentaré que se pueda utilizar en otras plataformas.
 
-Hay otras aplicacines parecidas en el mercado, con más funcionalidades pero este es mi pequeño granitoa la comunidad de software libre y para los usuarios de Linux.
+Hay otras aplicacines parecidas en el mercado, con más funcionalidades pero este es mi pequeño granito a la comunidad de software libre y para los usuarios de Linux.
 
 ## **Instalación**
 
