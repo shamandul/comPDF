@@ -11,6 +11,7 @@ Hay otras aplicacines parecidas en el mercado, con más funcionalidades pero est
 
 ## **Instalación**
 
+Puedes compilar tu mismo el programa o descargar el instalador comPDFInstaller e instalar una versión ya compilada.
 ## **Sobre Mi**
 Soy programador de aplicaciones web, me encanta todo lo relacionado con el backend y el frontend.
 También programo aplicaciones Java y Kotlin para plataforma Android, he empezado a aprender C++ y QT.
