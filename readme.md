@@ -12,6 +12,20 @@ Hay otras aplicacines parecidas en el mercado, con más funcionalidades pero est
 ## **Instalación**
 
 Puedes compilar tu mismo el programa o descargar el instalador comPDFInstaller e instalar una versión ya compilada.
+Para poder ejecutar el instalador recuerdaque tienes que dar permiso de ejecución al instalador ya sea desde la herramienta gráfica o desde la terminal.
+
+```
+chmod +x comPDFInstaller.run
+```
+
+Una vez ejecutado el instalador tienes que ir a la carpeta donde lo has instalado y dar permiso de ejecución al archivo comPDF y luego ejecutas la aplicación.
+Puedes realizarlo desde la herramienta gráfica o desde la terminal con los siguientes comandos.
+
+```
+chmod +x comPDF
+./comPDF
+```
+Espero que le sea de ayuda a alguien.
 ## **Sobre Mi**
 Soy programador de aplicaciones web, me encanta todo lo relacionado con el backend y el frontend.
 También programo aplicaciones Java y Kotlin para plataforma Android, he empezado a aprender C++ y QT.
