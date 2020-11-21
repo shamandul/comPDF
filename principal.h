@@ -46,6 +46,7 @@ private:
     QProcess *mProcess;
     QAction* mActAdd = nullptr;
     QAction* mActRemove = nullptr;
+    QString getProcess();
 
 };
 #endif // PRINCIPAL_H

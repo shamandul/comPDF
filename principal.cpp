@@ -135,11 +135,21 @@ void principal::on_btn_comprimir_clicked()
     }else if(uriDestino==""){
       ui->tx_mensaje->setText("Elige un Destino");
     }
-    if(uriOrigen!="" && uriDestino!=""){
+    /*if(uriOrigen!="" && uriDestino!=""){
         const char *comando= "gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="+uriDestino+"/destino.pdf " + uriOrigen;
         mProcess->start("/bin/sh", QStringList()<< "-c" << comando);
-    }
+    }*/
+    if(uriOrigen!="" && uriDestino!=""){
+        QString comando, programa;
+        if(QSysInfo::productType() == "windows"){
 
+            comando="C:/gs/gswin64c.exe -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="+uriDestino+"/destino.pdf " + uriOrigen;
+        }
+        else{
+           comando="gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="+uriDestino+"/destino.pdf " + uriOrigen;
+        }
+        mProcess->start(getProcess(), QStringList()<< "-c" << comando);
+     }
 }
 /**
  * Método que nos permite saber cuando ha terminado
@@ -215,7 +225,13 @@ void principal::on_bt_unir_clicked()
 {
 
     QString comando;
-    comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
+    //comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
+    if(QSysInfo::productType() == "windows"){
+        comando="C:/gs/gswin64c.exe -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
+    }
+    else{
+       comando="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=";
+    }
     unirPdf(comando);
 }
 /**
@@ -227,7 +243,12 @@ void principal::on_bt_unir_clicked()
 void principal::on_bt_unir_comprimir_clicked()
 {
     QString comando;
-    comando="gs -dBATCH -dNOPAUSE -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -q -sDEVICE=pdfwrite -sOutputFile=";
+    if(QSysInfo::productType() == "windows"){
+        comando="c:/gs/gswin64c.exe -dBATCH -dNOPAUSE -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -q -sDEVICE=pdfwrite -sOutputFile=";
+    }
+    else{
+       comando="gs -dBATCH -dNOPAUSE -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -q -sDEVICE=pdfwrite -sOutputFile=";
+    }
     unirPdf(comando);
 }
 /**
@@ -241,7 +262,13 @@ void principal::unirPdf(QString comando)
     QString archivos;
     if(uriDestino=="")
     {
-        char *home = getenv("HOME");
+        char *home;
+        if(QSysInfo::productType() == "window"){
+             home=getenv("USERS");
+            //home=_dupenv_s("Users");
+         }else {
+             home = getenv("HOME");
+         }
         uriDestino=home;
     }
     ui->tx_destino_unir->setText(uriDestino);
@@ -252,5 +279,13 @@ void principal::unirPdf(QString comando)
       archivos += ui->lista->item(i)->text() + " ";
     }
     comando += " " + archivos;
-    mProcess->start("/bin/sh", QStringList()<< "-c" << comando);
+    mProcess->start(getProcess(), QStringList()<< "-c" << comando);
+}
+
+QString principal::getProcess()
+{
+    if(QSysInfo::productType() == "windows") return "cmd";
+    if(QSysInfo::productType() == "osx") return "/bin/zsh";
+
+    return "bash";
 }
